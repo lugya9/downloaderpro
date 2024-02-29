@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download Video</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #282a36;
+        color: #f8f8f2;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        text-align: center;
+    }
+    h1 {
+        color: #50fa7b;
+    }
+    .url-container {
+        margin-bottom: 10px;
+    }
+    .url-input {
+        width: 400px;
+        height: 30px;
+        padding: 5px;
+        margin-top: 10px;
+    }
+    .download-button {
+        background-color: #ff5555;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .download-button:hover {
+        background-color: #ff7675;
+    }
+    .flash-container {
+        margin-top: 20px;
+    }
+    .flash {
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .info {
+        background-color: #8be9fd;
+    }
+    .success {
+        background-color: #50fa7b;
+    }
+    .error {
+        background-color: #ff5555;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Video Downloader</h1>
+    <form action="/download" method="post">
+        <div class="url-container">
+            <input type="text" class="url-input" name="url" placeholder="Enter YouTube Video URL">
+            <button class="download-button" type="submit">Download</button>
+        </div>
+    </form>
+    <div class="flash-container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="flash {{ message.split()[0].lower() }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+</div>
+
+</body>
+</html>
